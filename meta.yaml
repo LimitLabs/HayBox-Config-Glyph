@@ -1,5 +1,7 @@
 repo: JonnyHaystack/HayBox
-revision: 1562151
+revision: 505318c
 build:
-  - env: pico
+  - env: glyph_protoA
+    bin_ext: uf2
+  - env: glyph_protoB
     bin_ext: uf2
