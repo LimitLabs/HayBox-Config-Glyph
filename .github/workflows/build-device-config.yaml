@@ -33,6 +33,7 @@ jobs:
       PIO_ENV: ${{ matrix.env }}
       BIN_EXT: ${{ matrix.bin_ext }}
     strategy:
+        fail-fast: false
         matrix: 
           include: ${{ fromJson(needs.metadata.outputs.meta_json).build }}
 
@@ -46,12 +47,6 @@ jobs:
       uses: actions/checkout@v3
       with:
         path: config/${{ env.PIO_ENV }}
-    
-    - name: Check some stuff
-      run: |
-        ls -lah
-        ls -lah config
-        ls -lah ..
 
     - name: Set up Python
       uses: actions/setup-python@v4
