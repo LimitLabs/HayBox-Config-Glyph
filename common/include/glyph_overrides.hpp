@@ -5,6 +5,7 @@
 #include "comms/IntegratedDisplay.hpp"
 #include "comms/NeoPixelBackend.hpp"
 #include "core/config_utils.hpp"
+#include "neopixel_definitions.hpp"
 #include "stdlib.hpp"
 
 #include <Wire.h>
@@ -27,8 +28,13 @@ const Config default_config = {
                 SocdPair { .button_dir1 = BTN_RT3, .button_dir2 = BTN_RT5, .socd_type = SOCD_2IP_NO_REAC },
                 SocdPair { .button_dir1 = BTN_RT2, .button_dir2 = BTN_RT4, .socd_type = SOCD_2IP_NO_REAC },
             },
-            .button_remapping_count = 0,
-            .activation_binding_count = 3,
+            .button_remapping_count = 4,
+            .button_remapping = {
+                ButtonRemap { .physical_button = BTN_MB1,  .activates = BTN_UNSPECIFIED }, // Menu
+                ButtonRemap { .physical_button = BTN_MB2,  .activates = BTN_MB1 }, // Start
+                ButtonRemap { .physical_button = BTN_MB3,  .activates = BTN_MB3 }, // Back
+                ButtonRemap { .physical_button = BTN_MB4,  .activates = BTN_MB2 }, // Home
+            },
             .rgb_config = 1,
         },
         GameModeConfig {
@@ -40,8 +46,13 @@ const Config default_config = {
                 SocdPair { .button_dir1 = BTN_RT3, .button_dir2 = BTN_RT5, .socd_type = SOCD_2IP_NO_REAC },
                 SocdPair { .button_dir1 = BTN_RT2, .button_dir2 = BTN_RT4, .socd_type = SOCD_2IP_NO_REAC },
             },
-            .button_remapping_count = 0,
-            .activation_binding_count = 3,
+            .button_remapping_count = 4,
+            .button_remapping = {
+                ButtonRemap { .physical_button = BTN_MB1,  .activates = BTN_UNSPECIFIED }, // Menu
+                ButtonRemap { .physical_button = BTN_MB2,  .activates = BTN_MB1 }, // Start
+                ButtonRemap { .physical_button = BTN_MB3,  .activates = BTN_MB3 }, // Back
+                ButtonRemap { .physical_button = BTN_MB4,  .activates = BTN_MB2 }, // Home
+            },
             .rgb_config = 1,
         },
         GameModeConfig {
@@ -53,8 +64,13 @@ const Config default_config = {
                 SocdPair { .button_dir1 = BTN_RT3, .button_dir2 = BTN_RT5, .socd_type = SOCD_2IP },
                 SocdPair { .button_dir1 = BTN_RT2, .button_dir2 = BTN_RT4, .socd_type = SOCD_2IP },
             },
-            .button_remapping_count = 0,
-            .activation_binding_count = 3,
+            .button_remapping_count = 4,
+            .button_remapping = {
+                ButtonRemap { .physical_button = BTN_MB1,  .activates = BTN_UNSPECIFIED }, // Menu
+                ButtonRemap { .physical_button = BTN_MB2,  .activates = BTN_MB1 }, // Start
+                ButtonRemap { .physical_button = BTN_MB3,  .activates = BTN_MB3 }, // Back
+                ButtonRemap { .physical_button = BTN_MB4,  .activates = BTN_MB2 }, // Home
+            },
             .rgb_config = 1,
         },
         GameModeConfig {
@@ -64,6 +80,15 @@ const Config default_config = {
             .socd_pairs = {
                 SocdPair { .button_dir1 = BTN_LF3, .button_dir2 = BTN_LF1, .socd_type = SOCD_NEUTRAL },
                 SocdPair { .button_dir1 = BTN_LT1, .button_dir2 = BTN_RT4, .socd_type = SOCD_NEUTRAL },
+            },
+            .button_remapping_count = 6,
+            .button_remapping = {
+                ButtonRemap { .physical_button = BTN_MB3,  .activates = BTN_RT3 },
+                ButtonRemap { .physical_button = BTN_MB4,  .activates = BTN_RT2 },
+                ButtonRemap { .physical_button = BTN_MB2,  .activates = BTN_MB1 },
+                ButtonRemap { .physical_button = BTN_RT2,  .activates = BTN_UNSPECIFIED },
+                ButtonRemap { .physical_button = BTN_RT3,  .activates = BTN_UNSPECIFIED },
+                ButtonRemap { .physical_button = BTN_MB1,  .activates = BTN_UNSPECIFIED },
             },
             .rgb_config = 1,
             .layout_plate = LAYOUT_PLATE_SPLIT_FGC,
@@ -113,7 +138,6 @@ const Config default_config = {
                 ButtonRemap { .physical_button = BTN_RT3,  .activates = BTN_UNSPECIFIED },
                 ButtonRemap { .physical_button = BTN_MB1,  .activates = BTN_UNSPECIFIED },
             },
-            .activation_binding_count = 3,
             .rgb_config = 2,
             .layout_plate = LAYOUT_PLATE_FGC,
         },
@@ -125,7 +149,6 @@ const Config default_config = {
                 SocdPair { .button_dir1 = BTN_LT1, .button_dir2 = BTN_RT4, .socd_type = SOCD_2IP },
             },
             .button_remapping_count = 0,
-            .activation_binding_count = 3,
             .keyboard_mode_config = 1,
         },
     },

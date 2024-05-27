@@ -4,7 +4,6 @@
 #include "core/KeyboardMode.hpp"
 #include "core/Persistence.hpp"
 #include "core/mode_selection.hpp"
-#include "core/pinout.hpp"
 #include "core/state.hpp"
 #include "display/DisplayMode.hpp"
 #include "display/GlyphConfigMenu.hpp"
@@ -12,7 +11,9 @@
 #include "display/MenuButtonHints.hpp"
 #include "display/RgbBrightnessMenu.hpp"
 #include "glyph_overrides.hpp"
+#include "glyph_pinout.hpp"
 #include "input/DebouncedSwitchMatrixInput.hpp"
+#include "matrix_definition.hpp"
 #include "reboot.hpp"
 #include "stdlib.hpp"
 
@@ -21,36 +22,12 @@
 
 Config config = glyph_default_config();
 
-const size_t num_rows = 4;
-const size_t num_cols = 11;
-const uint row_pins[num_rows] = { 26, 25, 24, 23 };
-const uint col_pins[num_cols] = { 15, 14, 13, 12, 16, 17, 21, 20, 19, 18, 22 };
-// clang-format off
-const Button matrix[num_rows][num_cols] = {
-    {BTN_MB1,  BTN_MB2, BTN_MB3, BTN_MB4, BTN_MB5,  BTN_MB6,  BTN_MB7,  NA,      NA,      NA,      NA     },
-    { BTN_LF3, BTN_LF2, BTN_LF6, BTN_LF7, BTN_RF12, BTN_RF13, BTN_RF14, BTN_RF5, BTN_RF6, BTN_RF7, BTN_RF8},
-    { BTN_LF4, BTN_LF5, BTN_LF1, BTN_LF8, BTN_RF9,  BTN_RF10, BTN_RF11, BTN_RF1, BTN_RF2, BTN_RF3, BTN_RF4},
-    { BTN_LT5, BTN_LT4, BTN_LT1, BTN_LT3, BTN_LT2,  BTN_LT6,  BTN_RT2,  BTN_RT3, BTN_RT1, BTN_RT4, BTN_RT5},
-};
-// clang-format on
-
 DebouncedSwitchMatrixInput<num_rows, num_cols> matrix_input(
     row_pins,
     col_pins,
     matrix,
     DiodeDirection::COL2ROW
 );
-
-const Pinout pinout = {
-    .joybus_data = 4,
-    .nes_data = 4,
-    .nes_clock = 5,
-    .nes_latch = 6,
-    .mux = -1,
-    .nunchuk_detect = -1,
-    .nunchuk_sda = -1,
-    .nunchuk_scl = -1,
-};
 
 CommunicationBackend **backends = nullptr;
 size_t backend_count;
@@ -105,7 +82,7 @@ void loop() {
 }
 
 /* Second core handles OLED display */
-Adafruit_SSD1306 display(128, 64, &Wire1);
+Adafruit_SSD1306 display(128, 64, &OLED_WIRE_INSTANCE);
 IntegratedDisplay *display_backend = nullptr;
 
 RgbBrightnessMenu rgb_brightness_menu(config);
@@ -137,8 +114,8 @@ void setup1() {
 
     input_viewer = &input_display;
 
-    Wire1.setSDA(2);
-    Wire1.setSCL(3);
+    Wire1.setSDA(OLED_SDA);
+    Wire1.setSCL(OLED_SCL);
     Wire1.setClock(1'000'000UL);
     Wire1.begin();
     if (display.begin(SSD1306_SWITCHCAPVCC, 0x3C, false, false)) {
@@ -153,7 +130,10 @@ void setup1() {
             display_modes_count
         );
         // clang-format on
-        display_backend->SetDisplayMode(DISPLAY_MODE_BUTTON_HINTS);
+        display_backend->SetDisplayMode(
+            config.default_dashboard_option == DASHBOARD_INPUT_VIEWER ? DISPLAY_MODE_VIEWER
+                                                                      : DISPLAY_MODE_BUTTON_HINTS
+        );
     }
 }
 
