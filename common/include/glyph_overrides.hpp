@@ -79,10 +79,11 @@ const Config default_config = {
             .socd_pairs_count = 2,
             .socd_pairs = {
                 SocdPair { .button_dir1 = BTN_LF3, .button_dir2 = BTN_LF1, .socd_type = SOCD_NEUTRAL },
-                SocdPair { .button_dir1 = BTN_LT1, .button_dir2 = BTN_RT4, .socd_type = SOCD_NEUTRAL },
+                SocdPair { .button_dir1 = BTN_LF2, .button_dir2 = BTN_LT1, .socd_type = SOCD_NEUTRAL },
             },
-            .button_remapping_count = 6,
+            .button_remapping_count = 7,
             .button_remapping = {
+                ButtonRemap { .physical_button = BTN_RT4,  .activates = BTN_LT1 },
                 ButtonRemap { .physical_button = BTN_MB3,  .activates = BTN_RT3 },
                 ButtonRemap { .physical_button = BTN_MB4,  .activates = BTN_RT2 },
                 ButtonRemap { .physical_button = BTN_MB2,  .activates = BTN_MB1 },
@@ -98,7 +99,7 @@ const Config default_config = {
             .socd_pairs_count = 2,
             .socd_pairs = {
                 SocdPair { .button_dir1 = BTN_LF3, .button_dir2 = BTN_LF1, .socd_type = SOCD_NEUTRAL },
-                SocdPair { .button_dir1 = BTN_LT1, .button_dir2 = BTN_RT4, .socd_type = SOCD_NEUTRAL },
+                SocdPair { .button_dir1 = BTN_LF2, .button_dir2 = BTN_LT1, .socd_type = SOCD_NEUTRAL },
             },
             .button_remapping_count = 28,
             .button_remapping = {
