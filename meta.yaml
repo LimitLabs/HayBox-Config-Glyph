@@ -1,5 +1,5 @@
 repo: JonnyHaystack/HayBox
-revision: c75527c
+revision: ce0341c
 build:
   - env: glyph_protoA
     bin_ext: uf2
