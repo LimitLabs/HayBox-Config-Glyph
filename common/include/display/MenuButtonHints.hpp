@@ -6,7 +6,7 @@
 
 class MenuButtonHints : public DisplayMode {
   public:
-    MenuButtonHints(CommunicationBackend **const backends, size_t backends_count);
+    MenuButtonHints(CommunicationBackend **backends, size_t backends_count);
     DisplayModeId GetId();
     void HandleControls(
         IntegratedDisplay *instance,
@@ -18,7 +18,7 @@ class MenuButtonHints : public DisplayMode {
   protected:
     const char *CurrentlyPressedButtonText();
 
-    CommunicationBackend **const _backends;
+    CommunicationBackend **_backends;
     const size_t _backends_count;
     CommunicationBackendId _backend_id = COMMS_BACKEND_UNSPECIFIED;
 

@@ -4,7 +4,7 @@
 #include "core/config_utils.hpp"
 #include "util/state_util.hpp"
 
-MenuButtonHints::MenuButtonHints(CommunicationBackend **const backends, size_t backends_count)
+MenuButtonHints::MenuButtonHints(CommunicationBackend **backends, size_t backends_count)
     : _backends(backends),
       _backends_count(backends_count) {
     _backend_id = backends[0]->BackendId();

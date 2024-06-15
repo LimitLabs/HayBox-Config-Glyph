@@ -96,7 +96,7 @@ void setup1() {
 
     // These have to be initialized after backends.
     CommunicationBackendId primary_backend_id = backends[0]->BackendId();
-    static MenuButtonHints menu_button_hints(primary_backend_id);
+    static MenuButtonHints menu_button_hints(backends, backend_count);
     static InputDisplay input_display(
         platform_fighter_buttons,
         platform_fighter_buttons_count,
