@@ -109,14 +109,14 @@ const Config default_config = {
                 ButtonRemap { .physical_button = BTN_RF11, .activates = BTN_RF3 },
                 ButtonRemap { .physical_button = BTN_RF1,  .activates = BTN_RF4 },
                 // Right hand top row
-                ButtonRemap { .physical_button = BTN_RF12, .activates = BTN_RF5 },
-                ButtonRemap { .physical_button = BTN_RF13, .activates = BTN_RF6 },
-                ButtonRemap { .physical_button = BTN_RF14, .activates = BTN_RF7 },
+                ButtonRemap { .physical_button = BTN_RF13, .activates = BTN_RF5 },
+                ButtonRemap { .physical_button = BTN_RF14, .activates = BTN_RF6 },
+                ButtonRemap { .physical_button = BTN_RF15, .activates = BTN_RF7 },
                 ButtonRemap { .physical_button = BTN_RF5,  .activates = BTN_RF8 },
                 // Left hand row
-                ButtonRemap { .physical_button = BTN_LF8,  .activates = BTN_LF1 },
+                ButtonRemap { .physical_button = BTN_LF6,  .activates = BTN_LF1 },
                 ButtonRemap { .physical_button = BTN_LF7,  .activates = BTN_LF2 },
-                ButtonRemap { .physical_button = BTN_LF6,  .activates = BTN_LF3 },
+                ButtonRemap { .physical_button = BTN_LF8,  .activates = BTN_LF3 },
                 // Up button
                 ButtonRemap { .physical_button = BTN_LT6,  .activates = BTN_LT1 },
                 // Menu buttons
@@ -257,17 +257,17 @@ const Config default_config = {
         RgbConfig {
             .button_colors_count = 12,
             .button_colors = {
-                { BTN_LF6,  0xff0000 },
-                { BTN_LF7,  0xff0000 },
                 { BTN_LF8,  0xff0000 },
+                { BTN_LF7,  0xff0000 },
+                { BTN_LF6,  0xff0000 },
                 { BTN_LT6,  0xff0000 },
                 { BTN_RF9,  0xff0000 },
                 { BTN_RF10, 0xff0000 },
                 { BTN_RF11, 0xff0000 },
                 { BTN_RF1,  0xff0000 },
-                { BTN_RF12, 0xff0000 },
                 { BTN_RF13, 0xff0000 },
                 { BTN_RF14, 0xff0000 },
+                { BTN_RF15, 0xff0000 },
                 { BTN_RF5,  0xff0000 },
             },
         },

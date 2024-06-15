@@ -12,7 +12,6 @@
 #include "display/RgbBrightnessMenu.hpp"
 #include "glyph_overrides.hpp"
 #include "glyph_pinout.hpp"
-#include "input/DebouncedSwitchMatrixInput.hpp"
 #include "matrix_definition.hpp"
 #include "reboot.hpp"
 #include "stdlib.hpp"
@@ -21,13 +20,6 @@
 #include <config.pb.h>
 
 Config config = glyph_default_config();
-
-DebouncedSwitchMatrixInput<num_rows, num_cols> matrix_input(
-    row_pins,
-    col_pins,
-    matrix,
-    DiodeDirection::COL2ROW
-);
 
 CommunicationBackend **backends = nullptr;
 size_t backend_count;
