@@ -11,9 +11,6 @@
 #include <Wire.h>
 #include <config.pb.h>
 
-#define LED_PIN 7
-#define LED_COUNT 72
-
 // clang-format off
 
 const Config default_config = {
