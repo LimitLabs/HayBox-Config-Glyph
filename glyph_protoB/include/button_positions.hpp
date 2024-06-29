@@ -50,6 +50,8 @@ InputViewerButton full_layout_buttons[] = {
     { BTN_RF13, 64,  20, NORMAL_BUTTON_RADIUS},
     { BTN_RF14, 74,  15, NORMAL_BUTTON_RADIUS},
     { BTN_RF15, 84,  15, NORMAL_BUTTON_RADIUS},
+
+    { BTN_RF16, 72,  35, NORMAL_BUTTON_RADIUS},
 };
 size_t full_layout_buttons_count = count_of(full_layout_buttons);
 
