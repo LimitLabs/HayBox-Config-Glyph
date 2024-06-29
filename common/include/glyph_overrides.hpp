@@ -78,17 +78,19 @@ const Config default_config = {
                 SocdPair { .button_dir1 = BTN_LF3, .button_dir2 = BTN_LF1, .socd_type = SOCD_NEUTRAL },
                 SocdPair { .button_dir1 = BTN_LF2, .button_dir2 = BTN_LT1, .socd_type = SOCD_NEUTRAL },
             },
-            .button_remapping_count = 7,
+            .button_remapping_count = 9,
             .button_remapping = {
                 ButtonRemap { .physical_button = BTN_RT1,  .activates = BTN_LT1 },
                 ButtonRemap { .physical_button = BTN_MB3,  .activates = BTN_RT3 },
                 ButtonRemap { .physical_button = BTN_MB4,  .activates = BTN_RT2 },
                 ButtonRemap { .physical_button = BTN_MB2,  .activates = BTN_MB1 },
+                ButtonRemap { .physical_button = BTN_RF9,  .activates = BTN_LT2 },
                 ButtonRemap { .physical_button = BTN_RT2,  .activates = BTN_UNSPECIFIED },
                 ButtonRemap { .physical_button = BTN_RT3,  .activates = BTN_UNSPECIFIED },
                 ButtonRemap { .physical_button = BTN_MB1,  .activates = BTN_UNSPECIFIED },
+                ButtonRemap { .physical_button = BTN_LT2,  .activates = BTN_UNSPECIFIED },
             },
-            .rgb_config = 1,
+            .rgb_config = 2,
             .layout_plate = LAYOUT_PLATE_SPLIT_FGC,
         },
         GameModeConfig {
@@ -98,12 +100,12 @@ const Config default_config = {
                 SocdPair { .button_dir1 = BTN_LF3, .button_dir2 = BTN_LF1, .socd_type = SOCD_NEUTRAL },
                 SocdPair { .button_dir1 = BTN_LF2, .button_dir2 = BTN_LT1, .socd_type = SOCD_NEUTRAL },
             },
-            .button_remapping_count = 28,
+            .button_remapping_count = 30,
             .button_remapping = {
                 // Right hand bottom row
-                ButtonRemap { .physical_button = BTN_RF9,  .activates = BTN_RF1 },
-                ButtonRemap { .physical_button = BTN_RF10, .activates = BTN_RF2 },
-                ButtonRemap { .physical_button = BTN_RF11, .activates = BTN_RF3 },
+                ButtonRemap { .physical_button = BTN_RF10,  .activates = BTN_RF1 },
+                ButtonRemap { .physical_button = BTN_RF11, .activates = BTN_RF2 },
+                ButtonRemap { .physical_button = BTN_RF12, .activates = BTN_RF3 },
                 ButtonRemap { .physical_button = BTN_RF1,  .activates = BTN_RF4 },
                 // Right hand top row
                 ButtonRemap { .physical_button = BTN_RF13, .activates = BTN_RF5 },
@@ -120,6 +122,8 @@ const Config default_config = {
                 ButtonRemap { .physical_button = BTN_MB3,  .activates = BTN_RT3 },
                 ButtonRemap { .physical_button = BTN_MB4,  .activates = BTN_RT2 },
                 ButtonRemap { .physical_button = BTN_MB2,  .activates = BTN_MB1 },
+                // Extra buttons
+                ButtonRemap { .physical_button = BTN_RF16, .activates = BTN_LT2 },
                 
                 // Unmap the old buttons
                 ButtonRemap { .physical_button = BTN_RF2,  .activates = BTN_UNSPECIFIED },
@@ -132,11 +136,12 @@ const Config default_config = {
                 ButtonRemap { .physical_button = BTN_LF2,  .activates = BTN_UNSPECIFIED },
                 ButtonRemap { .physical_button = BTN_LF3,  .activates = BTN_UNSPECIFIED },
                 ButtonRemap { .physical_button = BTN_LT1,  .activates = BTN_UNSPECIFIED },
+                ButtonRemap { .physical_button = BTN_LT2,  .activates = BTN_UNSPECIFIED },
                 ButtonRemap { .physical_button = BTN_RT2,  .activates = BTN_UNSPECIFIED },
                 ButtonRemap { .physical_button = BTN_RT3,  .activates = BTN_UNSPECIFIED },
                 ButtonRemap { .physical_button = BTN_MB1,  .activates = BTN_UNSPECIFIED },
             },
-            .rgb_config = 2,
+            .rgb_config = 3,
             .layout_plate = LAYOUT_PLATE_FGC,
         },
         GameModeConfig {
@@ -225,8 +230,9 @@ const Config default_config = {
             },
         },
     },
-    .rgb_configs_count = 2,
+    .rgb_configs_count = 3,
     .rgb_configs = {
+        /* Platform Fighter */
         RgbConfig {
             .button_colors_count = 19,
             .button_colors = {
@@ -251,21 +257,44 @@ const Config default_config = {
                 { BTN_RT5, 0x0000ff },
             },
         },
+        /* Split FGC */
         RgbConfig {
-            .button_colors_count = 12,
+            .button_colors_count = 15,
+            .button_colors = {
+                { BTN_LF1, 0x00ff00 },
+                { BTN_LF2, 0x00ff00 },
+                { BTN_LF3, 0x00ff00 },
+                { BTN_LF4, 0x00ff00 },
+                { BTN_LT1, 0x00ff00 },
+                { BTN_RF1, 0x00ff00 },
+                { BTN_RF2, 0x00ff00 },
+                { BTN_RF3, 0x00ff00 },
+                { BTN_RF4, 0x00ff00 },
+                { BTN_RF5, 0x00ff00 },
+                { BTN_RF6, 0x00ff00 },
+                { BTN_RF7, 0x00ff00 },
+                { BTN_RF8, 0x00ff00 },
+                { BTN_RF9, 0x00ff00 },
+                { BTN_RT1, 0x00ff00 },
+            },
+        },
+        /* FGC */
+        RgbConfig {
+            .button_colors_count = 13,
             .button_colors = {
                 { BTN_LF8,  0xff0000 },
                 { BTN_LF7,  0xff0000 },
                 { BTN_LF6,  0xff0000 },
                 { BTN_LT6,  0xff0000 },
-                { BTN_RF9,  0xff0000 },
                 { BTN_RF10, 0xff0000 },
                 { BTN_RF11, 0xff0000 },
+                { BTN_RF12, 0xff0000 },
                 { BTN_RF1,  0xff0000 },
                 { BTN_RF13, 0xff0000 },
                 { BTN_RF14, 0xff0000 },
                 { BTN_RF15, 0xff0000 },
                 { BTN_RF5,  0xff0000 },
+                { BTN_RF16, 0xff0000 },
             },
         },
     },
